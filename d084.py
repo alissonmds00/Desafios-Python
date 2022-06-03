@@ -1,35 +1,30 @@
-from pstats import SortKey
 lista = []
 cadastros = []
+mai = men = 0
 mais = " "
-maisp = []
-maisl = []
 while True:
     if mais[0] == "N":
         break
-    nome = str(input("Digite o nome: "))
-    lista.append(nome)
-    peso = int(input("Informe o peso: "))
-    lista.append(peso)
+    lista.append(input("Digite o nome: ").strip())
+    lista.append(input("Digite o peso: "))
+    if len(cadastros) == 0:
+        mai = men = lista[1]
+    if lista[1] < men:
+        men = lista[1]
+    if lista[1] > mai:
+        mai = lista[1]
     cadastros.append(lista[:])
+    lista.clear()
     mais = str(input("Deseja adicionar mais pessoas? [S/N]: ")).strip().upper()
     while mais[0] not in "SN":
         mais = str(input("Deseja adicionar mais pessoas? [S/N]: ")).strip().upper()
-quant = len(cadastros)
-if quant % 2 == 0:
-    pesados = leves = quant//2
-else:    
-    pesados = leves = ((quant//2) - 1)
-cadastros.sort(key=itemgetter(1))
-for cont, pesos in enumerate(cadastros): # pesos aqui é usado para os valores dos pesos
-    if cont <= pesados:
-        maisp.append(pesos)
-        maisl.append(pesos)
-    else:
-        for d in range(pesados):
-            if pesos[cont][1] > maisp[d][1]:
-                maisp.append()
-print(f'Foram cadastradas {quant} pessoas.')
-
-
-    
+print(f'Ao todo foram cadastradas {len(cadastros)} pessoas')
+print(f'O maior peso foi de {mai}Kg e foi de:', end=" ")
+for p in cadastros:
+    if p[1] == mai:
+        print(f"\033[1;32m{p[0]}\033[m", end=' ')
+print()
+print(f'O menor peso foi de {men}Kg e foi de:', end=" ")
+for p in cadastros:
+    if p[1] == men:
+        print(f"\033[1;33m{p[0]}\033[m", end=" ")
