@@ -1,3 +1,4 @@
+from time import sleep
 mais = ''
 boletim = []
 notas = []
@@ -24,12 +25,18 @@ for quant in range(len(boletim)):
     media = 0
 for c in range(len(boletim)):
     print(f'A média de {boletim[c][0]}, foi {resultado[c]}')
-print(f'Para qual aluno deseja visualizar as notas? [999 para parar] ', end=" ")
-for c in range(len(boletim)):
-    print(f'{c} para {boletim[c][0]}')
-"""while True:
-    if mais == 999:
+while True:
+    for c in range(len(boletim)):
+        print(f'{c} para {boletim[c][0]}')
+    print('999 para parar')
+    mais = int(input('Deseja visualizar as notas de qual aluno?: '))
+    if mais != 999 and mais < len(boletim):
+        print(f'As notas de {boletim[mais][0]} foram {boletim[mais][1]} e {boletim[mais][2]}')
+        sleep(3)
+    elif mais != 999 and mais >= len(boletim):
+        mais = int(input(f'Aluno não encontrado. Deseja visualizar as notas de qual aluno?: valores entre [{0}] e [{len(boletim)-1}] '))
+    else:
         break
-    while mais != 999:
-        num = int(input(f'Digite o número do aluno que deseja ver as notas: '))
-        print(f'As notas de {')"""
+
+
+
