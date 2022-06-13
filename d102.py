@@ -13,4 +13,4 @@ def fatorial(n=1, show='False'):
                 print(f'{c} = {fat}')
 
 
-print(fatorial(6))
+print(fatorial(6, show='True'))
