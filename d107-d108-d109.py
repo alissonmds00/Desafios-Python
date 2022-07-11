@@ -1,4 +1,4 @@
-import moedas
+import moedas.moedas as moedas
 
 v = int(input('Qual o valor deseja que seja feita essa alteração? '))
 a = int(input('Em quantos por cento deseja AUMENTAR o valor? '))
